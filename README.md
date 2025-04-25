@@ -1,4 +1,4 @@
-# AutoBI - Plataforma Inteligente de Automatización de Datos Comerciales
+# MIBI - Plataforma Inteligente de Automatización de Datos Comerciales
 
 > Un sistema modular de microservicios para el procesamiento, análisis y visualización de datos de ventas en una carnicería.
 
@@ -6,13 +6,13 @@
 
 ## 🚀 Propósito del Proyecto
 
-**AutoBI** nace como una solución para automatizar y profesionalizar el flujo de datos comerciales en negocios como carnicerías, tiendas de barrio o comercios medianos que deben generar reportes periódicos (ej. DIAN) y tomar decisiones basadas en datos.
+**MIBI** nace como una solución para automatizar y profesionalizar el flujo de datos comerciales en negocios como carnicerías, tiendas de barrio o comercios medianos que con reportes periódicos pueden tomar decisiones basadas en datos.
 
 Automatiza desde la adquisición (API o archivo), limpieza y transformación, hasta el almacenamiento en PostgreSQL y la visualización en Power BI.
 
 Este proyecto tiene doble objetivo:
 
-- Mostrar habilidades profesionales como Backend Developer y Data Engineer.
+- Mostrar habilidades profesionales como Backend Developer y Data Engineer de nivel junior avanzado o mid level.
 - Servir como MVP funcional para empresas reales.
 
 ---
@@ -58,28 +58,30 @@ Este proyecto tiene doble objetivo:
 
 ## 📋 Estructura de carpetas
 
-```
-AutoBI/
-├── etl-python/           # FastAPI + Pandas
-├── api-gateway-node/     # Express + Autenticación
-├── db/                   # Scripts SQL iniciales
-├── powerbi/              # Archivos PBIX y recursos
-├── docker-compose.yml    # Orquestación local
-└── README.md
-```
+mibi/
+├── app/
+│ ├── etl/ ⚙️ # Servicios de ETL, procesamiento de datos (FastAPI + Pandas)
+│ ├── api/ 🔐 # API Gateway (Express + JWT, Autenticación)
+│ ├── db/ 🗄️ # Scripts SQL y estructura de base de datos
+│ ├── analytics/ 📄 # Archivos de Power BI y visualización de datos
+│ ├── docker-compose.yml 🐳 # Orquestación de contenedores para desarrollo local
+├── .gitignore # Archivos y carpetas a ignorar por Git
+├── .env # Variables de entorno para configuración local
+├── LICENSE # Licencia del proyecto
+├── README.md # Documentación principal del proyecto
 
 ---
 
 ## 🚧 Setup Rápido
 
 ```bash
-git clone https://github.com/tuusuario/AutoBI.git
-cd AutoBI
+git clone https://github.com/tuusuario/mibi.git
+cd mibi
 docker-compose up --build
 ```
 
-- Accede a FastAPI en: `http://localhost:8000/docs`
-- Accede a Gateway en: `http://localhost:3000`
+- Accede a FastAPI en: `http://localhost:8002/docs`
+- Accede a Gateway en: `http://localhost:30022`
 - PostgreSQL corre en: `localhost:5432`
 
 ---
