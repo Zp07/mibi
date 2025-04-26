@@ -1,0 +1,20 @@
+{
+  "name": "mibin-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "cors": "2.8.5",
+    "dotenv": "^6.1.4",
+    "jsonwebtoken": "9.0.0"
+  },
+  "keywords": [],
+  "author": "Camilo Zapata",
+  "license": "MIT",
+  "packageManager": "pnpm@10.8.1"
+}
