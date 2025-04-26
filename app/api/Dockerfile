@@ -1,11 +1,12 @@
 FROM node:18
 
-WORKDIR /app
+WORKDIR /app/api
 
 COPY package*.json ./
 
-RUN pnpm install --no-cache-dir
+RUN npm install -g pnpm \
+    && pnpm install --no-cache
 
 COPY . .
 
-CMD [ "node", "index.js" ]
+CMD [ "npm", "start" ]
