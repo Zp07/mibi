@@ -58,30 +58,38 @@ Este proyecto tiene doble objetivo:
 
 ## 📋 Estructura de carpetas
 
+````plaintext
 mibi/
 ├── app/
-│ ├── etl/ ⚙️ # Servicios de ETL, procesamiento de datos (FastAPI + Pandas)
-│ ├── api/ 🔐 # API Gateway (Express + JWT, Autenticación)
-│ ├── db/ 🗄️ # Scripts SQL y estructura de base de datos
-│ ├── analytics/ 📄 # Archivos de Power BI y visualización de datos
-│ ├── docker-compose.yml 🐳 # Orquestación de contenedores para desarrollo local
-├── .gitignore # Archivos y carpetas a ignorar por Git
-├── .env # Variables de entorno para configuración local
-├── LICENSE # Licencia del proyecto
-├── README.md # Documentación principal del proyecto
+│   ├── etl/ ⚙️ Servicios de ETL, procesamiento de datos (FastAPI + Pandas)
+│   ├── api/ 🔐 API Gateway (Express + JWT, Autenticación)
+│   ├── db/ 🗄️ Scripts SQL y estructura de base de datos
+│   ├── analytics/ 📄 Archivos de Power BI y visualización de datos
+│   └── docker-compose.yml 🐳 Orquestación de contenedores para desarrollo local
+├── .gitignore 📄 Archivos y carpetas a ignorar por Git
+├── .env 🛠️ Variables de entorno para configuración local
+├── LICENSE 📜 Licencia del proyecto
+└── README.md 📘 Documentación principal del proyecto
 
 ---
 
 ## 🚧 Setup Rápido
 
+### 🔧 Requisitos Previos
+- Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+---
+
+### 📦 Instalación
+
 ```bash
-git clone https://github.com/tuusuario/mibi.git
+git clone https://github.com/Zp07/mibi
 cd mibi
 docker-compose up --build
-```
+````
 
 - Accede a FastAPI en: `http://localhost:8002/docs`
-- Accede a Gateway en: `http://localhost:30022`
+- Accede a Gateway en: `http://localhost:3002`
 - PostgreSQL corre en: `localhost:5432`
 
 ---
