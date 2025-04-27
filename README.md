@@ -20,7 +20,7 @@ Este proyecto tiene doble objetivo:
 ## 📆 Caso de uso: Carnicería
 
 - Productos: carnes por corte, embutidos, combos.
-- Reportes diarios: ventas por producto, turno, cliente, forma de pago.
+- Reportes diarios: id producto, ventas totales por día.
 - Reportes mensuales para impuestos y stock.
 - Predicción: productos más vendidos, tendencias por temporada.
 
@@ -58,7 +58,7 @@ Este proyecto tiene doble objetivo:
 
 ## 📋 Estructura de carpetas
 
-````plaintext
+```plaintext
 mibi/
 ├── app/
 │   ├── etl/ ⚙️ Servicios de ETL, procesamiento de datos (FastAPI + Pandas)
@@ -70,15 +70,15 @@ mibi/
 ├── .env 🛠️ Variables de entorno para configuración local
 ├── LICENSE 📜 Licencia del proyecto
 └── README.md 📘 Documentación principal del proyecto
+```
 
 ---
 
-## 🚧 Setup Rápido
+### 🚧 Setup Rápido
 
 ### 🔧 Requisitos Previos
-- Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
----
+- Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 ### 📦 Instalación
 
@@ -86,7 +86,7 @@ mibi/
 git clone https://github.com/Zp07/mibi
 cd mibi
 docker-compose up --build
-````
+```
 
 - Accede a FastAPI en: `http://localhost:8002/docs`
 - Accede a Gateway en: `http://localhost:3002`
@@ -100,8 +100,8 @@ Power BI se conecta directamente a PostgreSQL o importa CSVs generados por el ET
 
 Se incluye un dashboard con:
 
-- Ventas por tipo de carne.
-- Comparativa entre días y meses.
+- Ventas por categoria.
+- Comparativa entre días, meses y años.
 - Margen bruto y stock proyectado.
 
 ---
