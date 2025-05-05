@@ -1,7 +1,7 @@
 
 # Definición del esquema de la base de datos
 DB_SCHEMA = """
-CREATE TABLE IF NOT EXISTS mibi_db (
+CREATE TABLE IF NOT EXISTS ventas_mibi (
     id SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
     client_id INTEGER NOT NULL,
@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS mibi_db (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_mibi_fecha ON mibi_db (fecha);
+CREATE INDEX IF NOT EXISTS idx_mibi_fecha ON ventas_mibi (fecha);
 """

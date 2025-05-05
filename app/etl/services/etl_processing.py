@@ -65,7 +65,7 @@ async def insert_data_to_db(df: pd.DataFrame) -> int:
         for _, row in df.iterrows():
             await conn.execute(
                 """
-                INSERT INTO mibi_db
+                INSERT INTO ventas_mibi
                 (fecha, producto, cantidad, precio_unitario, total, client_id)
                 VALUES ($1, $2, $3, $4, $5)
                 """,

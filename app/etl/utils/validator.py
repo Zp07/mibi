@@ -36,7 +36,7 @@ async def check_data_duplicate(df: pd.DataFrame):
         for date in unique_dates:
             date_str = date.isoformat() if isinstance(date, datetime) else date
             count = await conn.fetchval(
-                "SELECT COUNT(*) FROM mibi_db WHERE fecha = $1 AND client_id = $2", date_str, client_id
+                "SELECT COUNT(*) FROM ventas_mibi WHERE fecha = $1 AND client_id = $2", date_str, client_id
             )
             if count > 0:
                 dates_with_data.append(date_str) 

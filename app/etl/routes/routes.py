@@ -1,4 +1,5 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, UploadFile, File, Depends, Request, HTTPException
+from utils.jwt import JWTBearer
 from services.etl_processing import process_file
 from utils.validator import validate_file_extension
 
@@ -12,17 +13,20 @@ async def get_ventas(cliendt_id: str ):
     
 
  
-@router.post("/upload_file")
-async def upload_file(file: UploadFile = File(...), client_id: str = None): 
+@router.post("/upload_file", dependencies=[Depends(JWTBearer())])
+async def upload_file(request: Request, file: UploadFile = File(...)): 
     """
-    Cargar el archivo al servidor.
+    Cargar el archivo, valida y firma con client_id del token.
     """
+
     #Validar Extension
     await validate_file_extension(file)
-
+    print(f"esto es lo que llega -> ",request)
+    client_id = request.state.client_id
+    
     try:
         # procesar el archivo
-        result =  await process_file(file)
+        result =  await process_file(file, client_id)
         return {"status": "¡ Exitoso !", "message": result}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
