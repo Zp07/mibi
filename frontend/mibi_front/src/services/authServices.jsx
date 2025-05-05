@@ -9,7 +9,6 @@ export const LoginUser = async ({ email, password }) => {
     },
     body: JSON.stringify({ email, password }),
   });
-  console.log("res:", resLogin);
   return resLogin;
 };
 
@@ -22,7 +21,6 @@ export const RegisterUser = async ({ name, email, password }) => {
     },
     body: JSON.stringify({ name, email, password }),
   });
-  console.log("res:", resRegister);
   return resRegister;
 };
 

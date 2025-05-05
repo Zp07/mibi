@@ -12,8 +12,6 @@ class JWTBearer(HTTPBearer):
 
     async def __call__(self, request: Request):
         credentials: HTTPAuthorizationCredentials = await super(JWTBearer, self).__call__(request)
-        print("credentials JWT", credentials.credentials )
-
         if credentials:
             try:
                 # Decodificar el token
@@ -21,8 +19,6 @@ class JWTBearer(HTTPBearer):
                     credentials.credentials,
                     options={"verify_signature": False}
                 )
-                print("verified_payload", verified_payload)
-
 
                 audience = verified_payload.get("aud")
                 if not audience:
@@ -36,10 +32,8 @@ class JWTBearer(HTTPBearer):
                     audience=audience,
                     issuer="mibi-auth"
                 )
-                print("Payload decodificado:", payload)
 
                 request.state.client_id = payload.get("client_id")
-                print("client_id en request.state:", request.state.client_id) 
                 return credentials.credentials
             
             except jwt.ExpiredSignatureError:

@@ -22,7 +22,6 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
 
     #Validar Extension
     await validate_file_extension(file)
-    print(f"esto es lo que llega -> ",request)
     client_id = request.state.client_id
     
     try:

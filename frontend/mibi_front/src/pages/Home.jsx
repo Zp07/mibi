@@ -20,7 +20,6 @@ export default function Home() {
 
     try {
       const access_token = getToken();
-      console.log("TOKEN ENVIADO:", access_token);
 
       const res = await axios.post(`${etlUrl}/upload_file`, formData, {
         headers: {
