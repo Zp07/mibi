@@ -6,10 +6,11 @@ from utils.validator import validate_file_extension
 router = APIRouter()
 
 @router.get("/")
-async def get_ventas(cliendt_id: str ):
+async def get_ventas(client_id: str ):
     """
     Recibe client_id y devuelve un mensaje de bienvenida verificando el login.
     """
+    return "hello"
     
 
  
