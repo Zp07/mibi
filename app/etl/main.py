@@ -20,7 +20,7 @@ app = FastAPI(
 setup_cors(app)  
 
 # Incluir rutas de la API
-app.include_router(router, prefix="/api/v1", tags=["ETL"])
+app.include_router(router, prefix="/etl", tags=["ETL"])
 
 # Inicio del servidor
 @app.get("/")

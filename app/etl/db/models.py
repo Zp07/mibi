@@ -4,7 +4,7 @@ DB_SCHEMA = """
 CREATE TABLE IF NOT EXISTS ventas_mibi (
     id SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
-    client_id INTEGER NOT NULL,
+    client_id UUID NOT NULL,
     producto VARCHAR(255) NOT NULL,
     cantidad INTEGER NOT NULL,
     precio_unitario DECIMAL(10, 2) NOT NULL,
