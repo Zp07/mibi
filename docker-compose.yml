@@ -13,7 +13,7 @@ services:
       - db_data:/var/lib/postgresql/data
     ports:
       - ${DB_PORT}:5432
-
+  
 
   etl:
     build: ./app/etl
@@ -47,6 +47,8 @@ services:
       - DB_URL=${DB_URL}
     ports:
       - ${API_PORT}:3002
+    env_file:
+      - /.env
     volumes:
       - ./app/api:/app/api
       - /app/api/node_modules

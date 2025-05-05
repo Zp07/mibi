@@ -4,8 +4,7 @@ WORKDIR /app/api
 
 COPY package*.json ./
 
-RUN npm install -g pnpm \
-    && pnpm install --no-cache
+RUN npm install -g npm
 
 COPY . .
 
