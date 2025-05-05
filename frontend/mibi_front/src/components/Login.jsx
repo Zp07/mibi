@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginUser } from "../services/authServices";
+import { LoginUser, setToken } from "../services/authServices";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ export default function Login() {
 
       if (loginRes.ok) {
         const data = await loginRes.json();
-        localStorage.setItem("token", data.access_token);
+        setToken(data.access_token);
         console.log("Login Exitoso");
         navigate("/mibi/home");
         return;

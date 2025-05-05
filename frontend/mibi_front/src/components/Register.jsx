@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegisterUser } from "../services/authServices";
+import { setToken } from "../services/authServices";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -19,7 +20,7 @@ export default function Register() {
 
       if (registerRes.ok) {
         const data = await registerRes.json();
-        localStorage.setItem("token", data.access_token);
+        setToken(data.access_token);
         console.log("Registro Exitoso");
         navigate("/login");
         return;
