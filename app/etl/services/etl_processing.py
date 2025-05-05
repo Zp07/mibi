@@ -5,12 +5,13 @@ from db.connections import get_db_connection, ensure_table_exists
 from utils.validator import validate_file_column, check_data_duplicate
 
 
-async def process_file(file: UploadFile) -> str:
+async def process_file(file: UploadFile, client_id: int) -> str:
     """
     Procesa el archivo y realiza operaciones ETL.
 
     Args:
         file(archivo) :(UploadFile): el archivo a procesar.
+        client_id (int): ID del cliente.
     """
 
     # Asegura que la tabla existe
@@ -39,7 +40,10 @@ async def process_file(file: UploadFile) -> str:
     if "total" not in df.columns:
         df['total'] = df['cantidad'] * df['precio_unitario']
 
-    # Verificar si hay datos duplicados por fecha 
+    # Agregar la columna client_id
+    df['client_id'] = client_id
+
+    # Verificar si hay datos duplicados por fecha y client_id
     await check_data_duplicate(df)
 
     # Insertar los datos en la base de datos
@@ -62,7 +66,7 @@ async def insert_data_to_db(df: pd.DataFrame) -> int:
             await conn.execute(
                 """
                 INSERT INTO mibi_db
-                (fecha, producto, cantidad, precio_unitario, total)
+                (fecha, producto, cantidad, precio_unitario, total, client_id)
                 VALUES ($1, $2, $3, $4, $5)
                 """,
                 row['fecha'],
@@ -70,6 +74,7 @@ async def insert_data_to_db(df: pd.DataFrame) -> int:
                 row['cantidad'],
                 row['precio_unitario'],
                 row['total'],
+                row['client_id']
             )
             rows_inserted += 1
     finally:

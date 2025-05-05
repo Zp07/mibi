@@ -4,8 +4,16 @@ from utils.validator import validate_file_extension
 
 router = APIRouter()
 
+@router.get("/")
+async def get_ventas(cliendt_id: str ):
+    """
+    Recibe client_id y devuelve un mensaje de bienvenida verificando el login.
+    """
+    
+
+ 
 @router.post("/upload_file")
-async def upload_file(file: UploadFile = File(...)):
+async def upload_file(file: UploadFile = File(...), client_id: str = None): 
     """
     Cargar el archivo al servidor.
     """

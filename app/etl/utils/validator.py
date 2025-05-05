@@ -25,17 +25,18 @@ async def validate_file_column(df: pd.DataFrame):
     
 async def check_data_duplicate(df: pd.DataFrame):
     """
-    Verifica si hay datos duplicados por fechas en base de datos.
+    Verifica si hay datos duplicados por fechas y client_id en base de datos.
     """
     conn = await get_db_connection()
     unique_dates = df['fecha'].unique()
-    dates_with_data = []
+    client_id = df['client_id'].iloc[0] 
+    dates_with_data = []    
 
     try: 
         for date in unique_dates:
             date_str = date.isoformat() if isinstance(date, datetime) else date
             count = await conn.fetchval(
-                "SELECT COUNT(*) FROM mibi_db WHERE fecha = $1", date_str
+                "SELECT COUNT(*) FROM mibi_db WHERE fecha = $1 AND client_id = $2", date_str, client_id
             )
             if count > 0:
                 dates_with_data.append(date_str) 
